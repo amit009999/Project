@@ -131,8 +131,8 @@ const QueryModel = ()=>{
                      
                     </div>
 
-                    <div className={`bg-white ${!isVisible ? 'hidden' : ''}`}>
-                        
+                    <div className={`bg-white ${isVisible ? 'hidden' : ''}`}>
+                        <h1>test</h1>
                     </div>
                 
             </main>

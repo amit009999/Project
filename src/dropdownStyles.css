@@ -1,0 +1,18 @@
+/* DropdownStyles.css */
+
+/* Prevent the selector from wrapping and handle overflow */
+.custom-select .ant-select-selector {
+    @apply flex-nowrap overflow-hidden;
+    white-space: nowrap;
+  }
+  
+  /* Ensure individual tags do not wrap and handle text overflow */
+  .custom-select .ant-select-selection-item {
+    @apply whitespace-nowrap overflow-hidden text-ellipsis;
+  }
+  
+  /* Ensure the selected items container does not wrap */
+  .custom-select .ant-select-selection-overflow {
+    @apply flex-nowrap;
+  }
+  

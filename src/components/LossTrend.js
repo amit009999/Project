@@ -2,6 +2,9 @@
 import SingleSelectionDropdownoption from './SingleSelectionDropdown';
 import LosscalculationTrend from './LosscalculationTrend';
 import { useEffect, useState } from 'react';
+import { MdBarChart } from "react-icons/md";
+import { IoAnalyticsOutline } from "react-icons/io5";
+import { MdOutlineScatterPlot } from "react-icons/md";
 import Datepickercomponent from './Datepicker';
 import MultipleSelectionDropdown from './MultipleSelectionDropdown';
 import { IoArrowForwardSharp } from "react-icons/io5";
@@ -9,12 +12,12 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
-const invertersName = ['All Inverters']; 
+const invertersName = ['All']; 
 const LossTrend = ()=>{
     const [dropdownname,setdropdownname] = useState([])
     const [dateRange, setDateRange] = useState([dayjs().subtract(1, 'day').startOf('day').format('DD-MM-YYYY'), dayjs().subtract(1, 'day').endOf('day').format('DD-MM-YYYY')]);
     const [dropdownValue1, setDropdownValue1] = useState('Yesterday');
-    const [dropdownValue2, setDropdownValue2] = useState('All Inverters');
+    const [dropdownValue2, setDropdownValue2] = useState('All');
     const [dropdownValue3, setDropdownValue3] = useState(['a','b']);
     const [apidata, setApidata] = useState([]);
 
@@ -104,7 +107,20 @@ const LossTrend = ()=>{
                 <MultipleSelectionDropdown dropdownname={dropdownname} selectedValue={dropdownValue3} onValueChange={handleDropdownChange2} maxTagCount={7}/>
             </div>
             <div className='bg-white'>
+                <div className='flex flex-row flex-wrap'>
+                    {dropdownValue3.map((item)=>( 
+                            <div className=''> 
+                                <div className='flex flex-row bg-gray-300 m-2 border border-gray-500 text-2xl justify-center items-center'>
+                                    <h1 className='text-sm mx-1'>{item}</h1>
+                                    <MdBarChart className='text-gray-500 hover:text-gray-800 cursor-pointer mx-1'/>
+                                    <IoAnalyticsOutline className='text-gray-500 hover:text-gray-800 cursor-pointer mx-1' />
+                                    <MdOutlineScatterPlot className='text-gray-500 hover:text-gray-800 cursor-pointer mx-1' />
+                                </div>
+                            </div>
+                    ))}
+                </div>
                 <LosscalculationTrend legend={dropdownValue3}/>
+                
             </div>
         </div>
     )
